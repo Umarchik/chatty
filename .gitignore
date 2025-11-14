@@ -1,0 +1,14 @@
+.env
+.env.dev
+.env.prod
+venv/
+alembic/
+alembic.ini
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+*.log
+logs/
+*.out
