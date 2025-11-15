@@ -4,7 +4,7 @@ from aiogram.types import Update
 from app.presentation.telegram.main import create_bot
 
 
-router = APIRouter(tags=["Telegram Updates"])
+router = APIRouter(tags=["Telegram Updates"], include_in_schema=False)
 SECRET_TOKEN = "secrettoken"
 config = Config.load()
 

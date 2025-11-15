@@ -28,9 +28,11 @@ async def get_account_by_username(phone: str):
             return account
     raise HTTPException(status_code=404, detail="Аккаунт не найден")
 
-@router.post("/create_account", response_model=Account, summary="Создать аккаунт")
+@router.post("/", response_model=Account, summary="Создать аккаунт")
 async def create_account(account_data: Account):
-    max_id = max(account.id for account in accounts)
+    max_id = 0
+    if accounts:
+        max_id = max(account.id for account in accounts)
     new_id = max_id+1
 
     if account_data.username:
