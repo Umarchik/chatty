@@ -13,10 +13,13 @@ class User(BaseModel):
     username: Optional[str] = None
     first_name: Optional[str] = None
     last_name: Optional[str] = None
-    account: Account
+    account_id: int
     created_at: datetime
     
     def get_full_name(self) -> str:
         names = [self.first_name, self.last_name]
         return " ".join([name for name in names if name])
 
+    def get_account(self) -> Optional[Account]:
+        pass
+    

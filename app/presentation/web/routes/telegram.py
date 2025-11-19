@@ -4,13 +4,13 @@ from aiogram.types import Update
 from app.presentation.telegram.main import create_bot
 
 
-router = APIRouter(tags=["Telegram Updates"], include_in_schema=False)
+router = APIRouter(prefix="/tgbot", tags=["Telegram Updates"], include_in_schema=True)
 SECRET_TOKEN = "secrettoken"
 config = Config.load()
 
 
 # Обработчик вебхуков Telegram
-@router.post("/tgbot", name="Обновления телеграм")
+@router.post("/", name="Обновления телеграм")
 async def telegram_webhook(
     request: Request,
     x_telegram_bot_api_secret_token: str = Header(None),

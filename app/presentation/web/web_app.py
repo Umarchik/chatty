@@ -43,7 +43,7 @@ async def create_app(config: Config) -> FastAPI:
             can_delete_stories=False,
         )
         await bot.set_webhook(
-            url=f"https://userver05.ru/tgbot",
+            url=f"https://userver05.ru/tgbot/",
             drop_pending_updates=True,
             secret_token=SECRET_TOKEN,
         )
