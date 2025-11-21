@@ -1,8 +1,8 @@
-from app.domain.repositories.account import IAccountRepository
-from app.domain.repositories.user import IUserRepository
+from app.domain.repositories.account import AccountRepository
+from app.domain.repositories.user import UserRepository
 
 
 __all__ = (
-    "IAccountRepository",
-    "IUserRepository",
+    "AccountRepository",
+    "UserRepository",
 )

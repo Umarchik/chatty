@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel
-from redis import int_or_str
+
 
 from app.domain.entities.account import Account
 from app.domain.entities.user import User
@@ -14,14 +14,14 @@ class CreateUserDTO(BaseModel):
     username: Optional[str] = None
     first_name: Optional[str] = None
     last_name: Optional[str]  = None
-    account_id: int
+    account_id: Optional[int] = None
 
 
 class UpdateUserDTO(BaseModel):
     username: Optional[str] = None
     first_name: Optional[str] = None
     last_name: Optional[str] = None
-    account_id: int_or_str
+    account_id: int
 
 class UserResponseDTO(BaseModel):
     id: int

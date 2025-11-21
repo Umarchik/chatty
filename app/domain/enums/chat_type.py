@@ -2,7 +2,7 @@ from enum import Enum
 
 
 class ChatType(str, Enum):
-    PRIVATE = "privite"
+    PRIVATE = "private"
     GROUP = "group"
     SUPERGROUP = "supergroup"
     CHANNEL = "channel"

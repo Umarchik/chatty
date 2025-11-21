@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class ChatMemerStatus(Enum):
+class ChatMemberStatus(Enum):
     
     CREATOR = "creator"
     ADMINISTRATOR = "administrator"
@@ -15,4 +15,4 @@ class ChatMemerStatus(Enum):
         for status in cls:
             if status.value == value:
                 return status
-        raise ValueError(f"Unkown status: {value}")
+        raise ValueError(f"Unknown status: {value}")

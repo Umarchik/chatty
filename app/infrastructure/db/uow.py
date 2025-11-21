@@ -1,7 +1,7 @@
 from typing import Any, Dict, Type
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.infrastructure.db.repositories import AccountRepository, UserRepository
+from app.infrastructure.db.repositories import AccountRepositoryImpl, UserRepositoryImpl
 from app.infrastructure.db.session import SessionLocal
 
 
@@ -41,7 +41,7 @@ class UnitOfWork:
             else:
                 await self.session.commit()
         except Exception as e:
-            await self.rollback
+            await self.rollback()
             raise e
         finally:
             await self.session.close()
@@ -61,10 +61,10 @@ class UnitOfWork:
     
     # --- Repositories ---
     @property
-    def account(self) -> AccountRepository:
-        return self._get_ropositories(AccountRepository, "account")
+    def account(self) -> AccountRepositoryImpl:
+        return self._get_ropositories(AccountRepositoryImpl, "account")
 
     @property
-    def user(self) -> UserRepository:
-        return self._get_ropositories(UserRepository, "user")
+    def user(self) -> UserRepositoryImpl:
+        return self._get_ropositories(UserRepositoryImpl, "user")
 

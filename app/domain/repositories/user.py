@@ -1,20 +1,16 @@
 from abc import ABC, abstractmethod
-from typing import Sequence
+from typing import List, Optional
 from app.domain.entities.user import User
+from .base import BaseRepository
 
-class IUserRepository(ABC):
+class UserRepository(BaseRepository[User], ABC):
+    """Интерфейс репозитория пользователей"""
+    
     @abstractmethod
-    async def get_all(self) -> Sequence[User]:
+    async def get_by_external_id(self, external_id: str, messenger_type: str) -> Optional[User]:
         pass
-
+    
     @abstractmethod
-    async def get_by_id(self, user_id: int) -> User | None:
+    async def get_by_account_id(self, account_id: int) -> List[User]:
         pass
-
-    @abstractmethod
-    async def add(user: User) -> User:
-        pass
-
-    @abstractmethod
-    async def delete(user_id: int):
-        pass
+    

@@ -7,7 +7,7 @@ from ..enums.messenger_type import MessengerType
 
 
 class User(BaseModel):
-    id: int
+    id: Optional[int] = None
     external_id: str
     messenger_type: MessengerType
     username: Optional[str] = None
@@ -19,7 +19,3 @@ class User(BaseModel):
     def get_full_name(self) -> str:
         names = [self.first_name, self.last_name]
         return " ".join([name for name in names if name])
-
-    def get_account(self) -> Optional[Account]:
-        pass
-    

@@ -1,20 +1,16 @@
 from abc import ABC, abstractmethod
-from typing import Sequence
+from typing import List, Optional
 from app.domain.entities.account import Account
+from .base import BaseRepository
 
-class IAccountRepository(ABC):
+class AccountRepository(BaseRepository[Account], ABC):
+    """Интерфейс репозитория аккаунтов"""
+    
     @abstractmethod
-    async def get_all(self) -> Sequence[Account]:
+    async def get_by_username(self, username: str) -> Optional[Account]:
         pass
-
+    
     @abstractmethod
-    async def get_by_id(self, account_id: int) -> Account | None:
+    async def get_by_email(self, email: str) -> Optional[Account]:
         pass
-
-    @abstractmethod
-    async def add(account: Account) -> Account:
-        pass
-
-    @abstractmethod
-    async def delete(account_id: int):
-        pass
+    
