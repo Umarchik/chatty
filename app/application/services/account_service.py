@@ -112,7 +112,6 @@ class AccountService:
         """Создание аккаунта и пользователя в одной транзакции"""
         async with self.uow_class() as uow:
             try:
-                account_db = await uow.account.get
                 # Создаем аккаунт
                 account_entity = self.account_mapper.create_dto_to_entity(account_dto)                
                 saved_account = await uow.account.create(account_entity)              

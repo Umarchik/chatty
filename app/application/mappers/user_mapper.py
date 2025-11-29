@@ -19,7 +19,7 @@ class UserMapper:
             username=dto.username,
             first_name=dto.first_name,
             last_name=dto.last_name,
-            account_id=account_id,
+            account_id=final_account_id,
             created_at = datetime.utcnow()
         )
     

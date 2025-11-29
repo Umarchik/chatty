@@ -26,7 +26,7 @@ class UserDbMapper(IEntityMapper[User, UserModel]):
         return UserModel(
             id=entity.id,
             external_id=entity.external_id,
-            messenger_type=entity.messenger_type.value,
+            messenger_type=entity.messenger_type,
             username=entity.username,
             first_name=entity.first_name,
             last_name=entity.last_name,

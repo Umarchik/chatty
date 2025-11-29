@@ -13,7 +13,7 @@ from aiogram.types import ChatAdministratorRights
 SECRET_TOKEN = "secrettoken"
 
 async def create_app(config: Config) -> FastAPI:
-    app = FastAPI(title="Chatty")    
+    app = FastAPI(root_path="/tgbot", title="Chatty")    
 
     bot, dp = create_bot(config=config)
     app.state.bot = bot
@@ -43,7 +43,7 @@ async def create_app(config: Config) -> FastAPI:
             can_delete_stories=False,
         )
         await bot.set_webhook(
-            url=f"https://userver05.ru/tgbot/",
+            url=f"https://userver05.ru/tgbot/webhooks/",
             drop_pending_updates=True,
             secret_token=SECRET_TOKEN,
         )

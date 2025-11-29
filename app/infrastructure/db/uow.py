@@ -52,7 +52,7 @@ class UnitOfWork:
             raise RuntimeError("UoW не инициализирован. Используй 'async with uow'")
         return self.session
     
-    def _get_ropositories(self, repo_class: Type, key: str):
+    def _get_repositories(self, repo_class: Type, key: str):
         '''Получение репозитория с кешированием'''
 
         if key not in self._repositories:
@@ -62,9 +62,9 @@ class UnitOfWork:
     # --- Repositories ---
     @property
     def account(self) -> AccountRepositoryImpl:
-        return self._get_ropositories(AccountRepositoryImpl, "account")
+        return self._get_repositories(AccountRepositoryImpl, "account")
 
     @property
     def user(self) -> UserRepositoryImpl:
-        return self._get_ropositories(UserRepositoryImpl, "user")
+        return self._get_repositories(UserRepositoryImpl, "user")
 

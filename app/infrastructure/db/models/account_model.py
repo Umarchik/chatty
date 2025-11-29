@@ -1,6 +1,7 @@
+import pytz
 from datetime import datetime
 from typing import Optional, List, TYPE_CHECKING
-from sqlalchemy import Integer, String, DateTime
+from sqlalchemy import Integer, String, DateTime, text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.infrastructure.db.models import BaseModel
 
@@ -18,6 +19,6 @@ class AccountModel(BaseModel):
     first_name: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
     last_name: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
     phone: Mapped[Optional[str]] = mapped_column(String(12), nullable=True)
-    created_at: Mapped[Optional[datetime]] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[Optional[datetime]] = mapped_column(DateTime, default=text("TIMEZONE('Europe/Moscow', NOW())"))
 
     users: Mapped[List["UserModel"]] = relationship("UserModel", back_populates="account")

@@ -58,7 +58,7 @@ class UserService:
     async def get_users_by_messenger_type(self, messenger_type: MessengerType) -> List[UserResponseDTO]:
         """Получение пользователей по типу мессенджера"""
         async with self.uow_class() as uow:
-            user_entities = await uow.user.get_by_messenger_type(messenger_type.value)
+            user_entities = await uow.user.get_by_messenger_type(messenger_type)
             return [UserResponseDTO.from_entity(user) for user in user_entities]
 
     async def update_user(
