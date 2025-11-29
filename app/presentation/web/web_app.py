@@ -1,12 +1,8 @@
 import logging
-import os
 from app.core.config.settings import Config
-from fastapi import FastAPI, Request, Response, HTTPException, Header
-from fastapi.staticfiles import StaticFiles
+from fastapi import FastAPI
 from app.presentation.telegram.main import create_bot
-
-from app.presentation.web.routes.telegram import router as tg_router 
-from app.presentation.web.routes.accounts import router as test_router 
+from app.presentation.web.routes import include_routers
 from aiogram.types import ChatAdministratorRights
 
 
@@ -19,8 +15,7 @@ async def create_app(config: Config) -> FastAPI:
     app.state.bot = bot
     app.state.dp = dp
 
-    app.include_router(tg_router)
-    app.include_router(test_router)
+    include_routers(app)
     
     @app.on_event("startup")
     async def startup():

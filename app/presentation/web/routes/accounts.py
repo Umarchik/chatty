@@ -1,19 +1,14 @@
 from typing import List, Annotated
 from fastapi import APIRouter, Depends, HTTPException, status
 from app.domain.entities import Account
-from datetime import datetime
 
 from app.application.services.account_service import AccountService
-from app.application.di.container import Container
+from app.presentation.web.dependencies import depends
 
 
 router = APIRouter(prefix="/accounts", tags=["Аккаунты"])
 
-def get_account_service():
-    container = Container()
-    return container.account_service()
-
-AccountServiceDep = Annotated[AccountService, Depends(get_account_service)]
+AccountServiceDep = Annotated[AccountService, Depends(depends.get_accounts_service)]
 
 @router.get("/", response_model=List[Account], summary="Получить все аккаунты")  
 async def get_all_accounts(account_service: AccountServiceDep): 

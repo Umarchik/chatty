@@ -33,6 +33,7 @@ class UserService:
             if user_entity:
                 return UserResponseDTO.from_entity(user_entity)
             return None
+        
 
     async def get_user_by_external_id(
         self, 
