@@ -14,7 +14,7 @@ class User(BaseModel):
     first_name: Optional[str] = None
     last_name: Optional[str] = None
     account_id: int
-    created_at: datetime
+    created_at: Optional[datetime] = None
     
     def get_full_name(self) -> str:
         names = [self.first_name, self.last_name]

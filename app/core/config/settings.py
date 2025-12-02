@@ -34,7 +34,9 @@ class TelegramConfig(ConfigBase):
     )
 
     bot_token: str
+    bot_secret_token: str
     bot_id: int
+    bot_webhooks_url: str
 
 
 class RedisConfig(ConfigBase):

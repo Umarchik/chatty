@@ -6,7 +6,6 @@ from app.presentation.web.routes import include_routers
 from aiogram.types import ChatAdministratorRights
 
 
-SECRET_TOKEN = "secrettoken"
 
 async def create_app(config: Config) -> FastAPI:
     app = FastAPI(root_path="/tgbot", title="Chatty")    
@@ -38,12 +37,12 @@ async def create_app(config: Config) -> FastAPI:
             can_delete_stories=False,
         )
         await bot.set_webhook(
-            url=f"https://userver05.ru/tgbot/webhooks/",
+            url=config.telegram.bot_webhooks_url,
             drop_pending_updates=True,
-            secret_token=SECRET_TOKEN,
+            secret_token=config.telegram.bot_secret_token,
         )
         await bot.set_my_default_administrator_rights(rights)
-        logging.info("Установлены вебхуки")
+        logging.info(f"Установлен url для wehooks: {config.telegram.bot_webhooks_url}")
         
 
         

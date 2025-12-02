@@ -6,7 +6,6 @@ class AccountMapper:
     @staticmethod
     def create_dto_to_entity(dto: CreateAccountDTO) -> Account:
         return Account(
-            
             email=dto.email,
             phone=dto.phone,
             username=dto.username,
